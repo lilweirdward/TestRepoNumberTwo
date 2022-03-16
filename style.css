@@ -8,9 +8,75 @@ body {
     padding: 2rem 0;
 }
 
+.section.nav {
+  padding: 0.5rem 0;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.75);
+}
+
+.section.nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section.nav .brand {
+  display: block;
+  font-size: 2rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.section.nav .hamburger-menu {
+  display: block;
+  width: 2rem;
+}
+
+.section.nav nav {
+  display: none;
+}
+
+.section.nav nav .nav-item {
+  display: inline-block;
+  margin: 0 1.5rem;
+}
+
+@media screen and (min-width: 800px) {
+  .section.nav .hamburger-menu {
+    display: none;
+  }
+
+  .section.nav nav {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .section.nav .brand {
+    font-size: 4rem;
+  }
+
+  .section.nav nav .nav-item {
+    margin: 0 3rem;
+    font-size: 2rem;
+  }
+}
+
+.section.first {
+  margin-top: 3rem;
+}
+
 .section.black {
     background-color: black;
     color: white;
+}
+
+.section.image img {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
 }
 
 .container {
@@ -18,8 +84,91 @@ body {
     margin: 0 auto;
 }
 
-.container img {
-    width: 50%;
+.lines-button {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 4rem;
+    width: 4rem;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    cursor: pointer;
+    user-select: none;
+    background-color: #eeeeee;
+    z-index: 1;
+  }
+  .lines-button:hover {
+    background-color: #232323;
+    opacity: 1;
+  }
+  .lines-button:hover .lines:before {
+    top: 0.35rem;
+    background: white;
+  }
+  .lines-button:hover .lines:after {
+    top: -0.35rem;
+    background: white;
+  }
+  .lines-button:active {
+    transition: 0;
+  }
+  .lines-button:focus {
+    outline: none;
+  }
+  .lines-button.x.close {
+    background-color: #232323;
+  }
+  .lines-button.x.close .lines {
+    /*overlay the lines by setting both their top values to 0*/
+  }
+  .lines-button.x.close .lines:before, .lines-button.x.close .lines:after {
+    transform-origin: 50% 50%;
+    top: 0;
+    width: 1.25rem;
+    background: white;
+  }
+  .lines-button.x.close .lines:before {
+    transform: rotate3d(0, 0, 1, 45deg);
+  }
+  .lines-button.x.close .lines:after {
+    transform: rotate3d(0, 0, 1, -45deg);
+  }
+  .lines-button.x.close ~ ul.navitems {
     display: block;
-    margin: 0 auto;
-}
+  }
+  .lines-button .lines {
+    display: inline-block;
+    width: 1.25rem;
+    height: 0.1875rem;
+    background: #232323;
+    border-radius: 0.125rem;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    position: relative;
+    /*hide the middle line*/
+    background: transparent;
+    /*create the upper and lower lines as pseudo-elements of the middle line*/
+  }
+  .lines-button .lines:before, .lines-button .lines:after {
+    display: inline-block;
+    width: 1.25rem;
+    height: 0.1875rem;
+    background: #232323;
+    border-radius: 0.125rem;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    position: absolute;
+    left: 0;
+    content: '';
+    transform-origin: 0.125rem center;
+  }
+  .lines-button .lines:before {
+    top: 0.25rem;
+  }
+  .lines-button .lines:after {
+    top: -0.25rem;
+  }
